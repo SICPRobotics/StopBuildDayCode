@@ -65,7 +65,7 @@ public class Shooter extends Subsystem {
 		//write the code to run the shooter here
 	}
     
-    public void stopShooting()
+    public static void stopShooting()
     {
     	//TODO: Having trouble getting shooter to actually stop
     	//shootMotor.disable();

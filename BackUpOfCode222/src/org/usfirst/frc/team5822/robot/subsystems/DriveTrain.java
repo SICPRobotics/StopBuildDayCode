@@ -12,23 +12,17 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 public class DriveTrain extends PIDSubsystem 
 {
 
-	
-	/*static SICPRobotDrive drive;*/
 	public static SICPRobotDrive drive;
-	ADXRS450_Gyro gyro;
 	static double setpoint; 
 	public static boolean isTurning; 
 	static boolean isBackwards; 
 	
 	public DriveTrain()
 	{
-
 		super("DriveTrain", .02, 0.00,0);// The constructor passes a name for the subsystem and the P, I and D constants that are sueed when computing the motor output
 		setAbsoluteTolerance(0.001);
 		getPIDController().setContinuous(false);
 		drive = new SICPRobotDrive(0,1,2,3);
-		gyro = new ADXRS450_Gyro();
-		gyro.reset();
 		setpoint = 0; 
 		isTurning = false; 
 		isBackwards = false; 
@@ -47,7 +41,7 @@ public class DriveTrain extends PIDSubsystem
 	
 	protected double returnPIDInput() 
 	{    	
-		return gyro.getAngle() - setpoint; // returns the sensor value that is providing the feedback for the system
+		return Sensors.gyroAngle() - setpoint; // returns the sensor value that is providing the feedback for the system
     }
 
 	public static void pidBackwards(boolean backwards)

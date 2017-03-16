@@ -28,6 +28,7 @@ public class TurnRightFast extends Command {
 	{
 		System.out.println("turning right fast ANGELA IS THE SMARTEST");
 		Robot.sensors.resetGyro();
+		Robot.driveTrain.changeIsTurning(true);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -60,6 +61,8 @@ public class TurnRightFast extends Command {
 	protected void end() 
 	{
 		System.out.println("done with turn");
+		Robot.driveTrain.changeIsTurning(false);
+
 	}
 
 	// Called when another command which requires one or more of the same

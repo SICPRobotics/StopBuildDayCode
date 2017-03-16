@@ -11,13 +11,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class GearVision extends Command {
 	
-	
-
-    public GearVision() 
+	public GearVision() 
     {
     	requires (Robot.vision);
-    	
-     
     }
     
     // Called just before this Command runs the first time
@@ -28,7 +24,6 @@ public class GearVision extends Command {
     	{
     		Robot.vision.enable(); 
     		Robot.vision.setSetpoint(0);
-    	
     	}
     	
     	VisionPID.changeGearDone(false);

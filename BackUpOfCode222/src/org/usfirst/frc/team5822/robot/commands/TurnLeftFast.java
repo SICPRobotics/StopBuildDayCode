@@ -25,7 +25,7 @@ public class TurnLeftFast extends Command {
 	@Override
 	protected void initialize() 
 	{
-		System.out.println("turning left fast ANGELA IS CHILL");
+		Robot.driveTrain.changeIsTurning(true);
 		Sensors.resetGyro();
 	}
 
@@ -59,7 +59,7 @@ public class TurnLeftFast extends Command {
 	@Override
 	protected void end() 
 	{
-		System.out.println("done with turn");
+		Robot.driveTrain.changeIsTurning(false);
 	}
 
 	// Called when another command which requires one or more of the same

@@ -34,19 +34,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	public static OI oi;
+	public static Preferences prefs; 
+	SendableChooser<Command> chooseAutonomous; 
 	
-	public static final DriveTrain driveTrain = new DriveTrain();
-	public static final Shooter shooter = new Shooter();
-	//public static final Sensors sensors = new Sensors();
-	public static final Intake intake = new Intake();
-	public static final Climber climber = new Climber();
-	public static final Sensors sensors = new Sensors();
-	//public static OI oi;
+	public static OI oi;
+	public static DriveTrain driveTrain;
+	public static Shooter shooter;
+	public static Sensors sensors;
+	public static Intake intake;
+	public static Climber climber;
+	public static NetworkTable piTable;
+	public static VisionPID vision;
 	
 //	public static NetworkTable piTable;
 	Command autonomousCommand;
-	public static VisionPID vision;
 	//public static DriveTrain driveTrain = null;
 //	ITableListener_WB piListen = new ITableListener_WB();
 	UsbCamera cam0; 
@@ -57,17 +58,17 @@ public class Robot extends IterativeRobot {
 	CvSource cvSource;
 	CvSink cvSink1; 
 	CvSource cvSource1;
-	
 	PWM leds3;
-	public static Preferences prefs; 
-	
-	SendableChooser<Command> chooseAutonomous; 
 
 	@Override
 	public void robotInit() 
 	{
 		chooseAutonomous = new SendableChooser<Command>(); 
-		
+		driveTrain = new DriveTrain();
+		intake = new Intake();
+		climber = new Climber();
+		shooter = new Shooter();
+		sensors = new Sensors();
 		vision = new VisionPID();
 		oi = new OI();		
 		
@@ -88,6 +89,8 @@ public class Robot extends IterativeRobot {
 		chooseAutonomous.addObject("Gear at Red Retrieval Zone", new AutoRedRetrievalZoneGear());
 	 		
 		SmartDashboard.putData("Auto mode", chooseAutonomous);
+		SmartDashboard.putBoolean("Gear Vision: ", VisionPID.gearVision);
+		SmartDashboard.putNumber("Center", VisionPID.center);
 		
 		leds3 = new PWM(3); 
 		 
@@ -278,6 +281,8 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 				
+		SmartDashboard.putBoolean("Gear Vision", Robot.vision.gearVision); 
+		SmartDashboard.putBoolean("Data From Pi", Robot.vision.piTable.getBoolean("Gear Vision from Pi", false)); 
 		if (!VisionPID.gearVision&&!VisionPID.hGVision&&!DriveTrain.isTurning)
 			JoystickFunctions.joystickDrive(DriveTrain.drive);
 

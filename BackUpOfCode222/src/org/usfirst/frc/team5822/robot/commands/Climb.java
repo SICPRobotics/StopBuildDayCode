@@ -3,6 +3,7 @@ package org.usfirst.frc.team5822.robot.commands;
 import org.usfirst.frc.team5822.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Climb extends Command {
 	
@@ -15,6 +16,7 @@ public class Climb extends Command {
 	@Override
 	protected void initialize() 
 	{
+		SmartDashboard.putBoolean("Climbing", true); 
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -22,7 +24,7 @@ public class Climb extends Command {
 	protected void execute() 
 	{
 		Robot.climber.climb();
-		System.out.println("Climb");
+		System.out.println("CLIMBING");
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -44,5 +46,6 @@ public class Climb extends Command {
 	@Override
 	protected void interrupted() 
 	{
+		
 	}
 }

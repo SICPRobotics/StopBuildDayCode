@@ -50,7 +50,9 @@ public class VisionPID extends PIDSubsystem {
 	
 	public static boolean gearVision, hGVision; 
 	static boolean noVision; 
-	double center, tolerance, distance;
+	public static double center;
+	double tolerance;
+	double distance;
 	public static boolean gearDone;
 	public static boolean HGDone;
 	

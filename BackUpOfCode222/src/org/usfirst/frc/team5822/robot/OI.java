@@ -12,6 +12,7 @@ import org.usfirst.frc.team5822.robot.commands.HighGoalCG;
 import org.usfirst.frc.team5822.robot.commands.InvertMotors;
 import org.usfirst.frc.team5822.robot.commands.OuttakeFast;
 import org.usfirst.frc.team5822.robot.commands.OuttakeSlow;
+import org.usfirst.frc.team5822.robot.commands.Set180;
 import org.usfirst.frc.team5822.robot.commands.Shoot;
 import org.usfirst.frc.team5822.robot.commands.StopClimb;
 import org.usfirst.frc.team5822.robot.commands.StopIntake;
@@ -20,6 +21,7 @@ import org.usfirst.frc.team5822.robot.commands.Swallow;
 import org.usfirst.frc.team5822.robot.commands.ToggleGear;
 import org.usfirst.frc.team5822.robot.commands.ToggleHG;
 import org.usfirst.frc.team5822.robot.commands.ChangeIsTurning;
+import org.usfirst.frc.team5822.robot.commands.ClearScheduler;
 import org.usfirst.frc.team5822.robot.commands.Turn180;
 
 /**
@@ -66,11 +68,12 @@ public class OI {
 		j7.whenActive(new GearCG());
 		j7.whenInactive(new GearCG());
 		
-		j8.whenActive(new HighGoalCG());
-		j8.whenInactive(new HighGoalCG());		
+		j8.whenPressed(new ClearScheduler());
 		
 		j11.whenPressed(new InvertMotors());
+		
 		j12.whenActive(new Turn180());
+		j12.whenInactive(new Set180(false));
 		j12.whenPressed(new ChangeIsTurning(true)); 
 		j12.whenReleased(new ChangeIsTurning(false));
 		

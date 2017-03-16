@@ -3,6 +3,7 @@ package org.usfirst.frc.team5822.robot.commands;
 import org.usfirst.frc.team5822.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -13,11 +14,13 @@ public class OuttakeFast extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.intake);
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	System.out.println("Reject fuel.");
+    	SmartDashboard.putBoolean("Outtake Fast", true);
     }
 
     // Called repeatedly when this Command is scheduled to run

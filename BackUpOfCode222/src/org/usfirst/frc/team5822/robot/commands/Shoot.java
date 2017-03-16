@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5822.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5822.robot.Robot;
 import org.usfirst.frc.team5822.robot.subsystems.Shooter;
@@ -20,6 +21,7 @@ public class Shoot extends Command {
 	protected void initialize() 
 	{
 		Shooter.init();
+    	SmartDashboard.putBoolean("Shooting", true);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

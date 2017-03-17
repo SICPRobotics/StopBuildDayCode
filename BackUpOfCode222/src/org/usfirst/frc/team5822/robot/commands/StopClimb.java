@@ -18,7 +18,7 @@ public class StopClimb extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-		SmartDashboard.putBoolean("Climbing", false);
+		/*SmartDashboard.putBoolean("Climbing", false);*/
 
     }
 

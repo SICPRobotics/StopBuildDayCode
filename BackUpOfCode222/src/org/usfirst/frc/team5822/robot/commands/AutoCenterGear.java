@@ -9,9 +9,9 @@ public class AutoCenterGear extends CommandGroup {
 
     public AutoCenterGear() {
     	 
-       addSequential(new DriveForward(3)); 
-    	addSequential(new GearCG());
-       addSequential(new DriveForward(63));
-       addSequential(new DriveSlow(2));
+       addSequential(new DriveForward(66)); 
+       //addSequential(new GearCG());
+       //addSequential(new DriveForward(63));
+       //addSequential(new DriveSlow(2));
     }
 }

@@ -9,14 +9,15 @@ public class AutoRedBoilerGear extends CommandGroup {
 
     public AutoRedBoilerGear()
     {
-     addSequential(new DriveForward(40));
-     addSequential(new TurnLeftFast(-55));
-     addSequential(new TurnRightSlow(-55));
+     addSequential(new DriveForward(80));
+     addSequential(new TurnLeftFast(-60));
+     addSequential(new TurnRightSlow(-60));
      addSequential(new ResetEncoder());
+     addSequential(new ChangeVisionDistance(36)); 
      addSequential(new GearCG());
      addSequential(new ResetGyro());
-     addSequential(new DriveForward(63));
-     addSequential(new DriveSlow(2));
+     addSequential(new DriveForward(47));
+     addSequential(new DriveSlow(4));
      //Need the stuff that lets the human player take up gear
     }
 }

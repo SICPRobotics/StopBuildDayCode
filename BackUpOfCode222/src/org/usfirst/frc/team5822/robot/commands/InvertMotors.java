@@ -24,13 +24,13 @@ public class InvertMotors extends Command {
     {
     	JoystickFunctions.invertMotors(); 
     	x = x+1;
-    	if (x%2 ==0)
+    	/*if (x%2 ==0)
     	{
     	   	SmartDashboard.putBoolean("Inverted Motors?", true);
     	   	System.out.println("x: " + x);
     	}
     	else
-    	   	SmartDashboard.putBoolean("Inverted Motors?", false);
+    	   	SmartDashboard.putBoolean("Inverted Motors?", false);*/
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -63,7 +63,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() 
 	{
-		chooseAutonomous = new SendableChooser<Command>(); 
+		chooseAutonomous = new SendableChooser(); 
 		driveTrain = new DriveTrain();
 		intake = new Intake();
 		climber = new Climber();
@@ -88,12 +88,13 @@ public class Robot extends IterativeRobot {
 		//chooseAutonomous.addObject("Shoot then Gear at Red Boiler", new AutoRedBoilerShootGear());
 		chooseAutonomous.addObject("Gear at Red Retrieval Zone", new AutoRedRetrievalZoneGear());
 	 		
+		Scheduler.getInstance().run();
 		SmartDashboard.putData("Auto mode", chooseAutonomous);
-		SmartDashboard.putBoolean("Gear Vision: ", VisionPID.gearVision);
-		SmartDashboard.putNumber("Center", VisionPID.center);
+		//SmartDashboard.putBoolean("Gear Vision: ", VisionPID.gearVision);
+		//SmartDashboard.putNumber("Center", VisionPID.center);
 		
-		leds3 = new PWM(3); 
-		 
+		
+				 
 		prefs = Preferences.getInstance(); 
 		prefs.putInt("Top H Gear", 0);
 		prefs.putInt("Top S Gear", 0);
@@ -135,50 +136,70 @@ public class Robot extends IterativeRobot {
 		});
 		updateSmartDashBoard.start();*/
 		
-		/*Thread t = new Thread(() -> {
-			try {
-				cam0 = new UsbCamera ("USB Camera 0", 0);
-				cam0.setResolution(320,240);
-				cam0.setFPS(20);
+		Thread t = new Thread(() -> {
+//		/*	try {
+//				cam0 = new UsbCamera ("cam2", 1);
+//				cam0.setResolution(320,240);
+//				cam0.setFPS(20);
+//				
+//				cvSink = CameraServer.getInstance().getVideo(cam0);
+//				cvSink.setEnabled(true);
+//				cvSource = CameraServer.getInstance().putVideo("Current View", 320, 240);
+//				image = new Mat();	 
+//				
+//				
+//			}
+//			
+//			catch (Exception e)
+//			{
+//				System.out.println(e); 
+//			}*/
+//			
+			try{
 				
-				cam1 = new UsbCamera ("USB Camera 1", 1);
+				cam1 = CameraServer.getInstance().startAutomaticCapture(0);
+				cam1.setResolution(320, 240);
+				
+				/*cam0 = CameraServer.getInstance().startAutomaticCapture(1);
+				cam0.setResolution(320, 240);
+				*/
+				
+				/*cam1 = new UsbCamera ("cam5", 1);
+				//cam1 = new UsbCamera ("USB Camera 5", 1);
 				cam1.setResolution(320,240);
-				cam1.setFPS(20);
-				
-				cvSink = CameraServer.getInstance().getVideo(cam0);
-				cvSink.setEnabled(true);
-				cvSource = CameraServer.getInstance().putVideo("Current View", 320, 240);
-				image = new Mat();	 
-				
+				cam1.setFPS(10);
+				 
 				cvSink1 = CameraServer.getInstance().getVideo(cam1);
 				cvSink1.setEnabled(true);
 				cvSource1 = CameraServer.getInstance().putVideo("Current View 1", 320, 240);
-				image1 = new Mat();	
+				image1 = new Mat();	*/
 			}
 			catch (Exception e)
 			{
 				System.out.println(e); 
 			}
-			
-			while(!Thread.interrupted()) 
-			{
-				try{
-					cvSink.grabFrame(image);
-					cvSource.putFrame(image);
-				
-					cvSink1.grabFrame(image1);
-					cvSource1.putFrame(image1);
-					
-				}
-				catch (Exception e){
-					System.out.println(e);
-				}
-				
-				
-			}
+//			
+//			while(!Thread.interrupted()) 
+//			{
+//				try{
+//					/*cvSink.grabFrame(image);
+//					cvSource.putFrame(image);*/
+//				
+//					cvSink1.grabFrame(image1);
+//					cvSource1.putFrame(image1);
+//					
+//				}
+//				catch (Exception e){
+//					System.out.println(e);
+//				}
+//				
+//				
+//			}
 		}
 		);
-        t.start();*/
+        t.start();
+		
+		SmartDashboard.putNumber("Encoder Value", Sensors.rightEncoderDistance()); 
 	}
 
 	/**
@@ -193,7 +214,9 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledPeriodic() {
-		Scheduler.getInstance().run();
+		
+		/*SmartDashboard.putNumber("Encoder Value", Sensors.rightEncoderDistance()); 
+		SmartDashboard.putNumber("Gyro Value", Sensors.gyroAngle()); */
 	}
 
 	/**
@@ -218,7 +241,6 @@ public class Robot extends IterativeRobot {
 		{
 			System.out.println(autonomousCommand.getName());
 			autonomousCommand.start(); 
-			
 		}
 		
 //		VisionPID.piTable.putBoolean("HGVision Enabled", VisionPID.hGVision); 
@@ -266,11 +288,15 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		
+		 
+				Robot.vision.disable(); 
+		Robot.driveTrain.disable();
 		Sensors.resetEncoders();
 		Robot.driveTrain.changeIsTurning(false);
 		Robot.vision.changeGearDone(true);
+		Robot.vision.setGearVision(false);
 		
+		Scheduler.getInstance().removeAll();		
 		
 	}
 
@@ -286,8 +312,9 @@ public class Robot extends IterativeRobot {
 		if (!VisionPID.gearVision&&!VisionPID.hGVision&&!DriveTrain.isTurning)
 			JoystickFunctions.joystickDrive(DriveTrain.drive);
 
-		//System.out.println("LEFT ENCODER: " + Sensors.leftEncoderDistance());
+	/*	//System.out.println("LEFT ENCODER: " + Sensors.leftEncoderDistance());
 		System.out.println("RIGHT ENCODER: " + Sensors.rightEncoderDistance());
+		*/
 		
 		
 	}

@@ -16,7 +16,7 @@ public class Climb extends Command {
 	@Override
 	protected void initialize() 
 	{
-		SmartDashboard.putBoolean("Climbing", true); 
+		/*SmartDashboard.putBoolean("Climbing", true); */
 	}
 
 	// Called repeatedly when this Command is scheduled to run

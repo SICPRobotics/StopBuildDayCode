@@ -228,6 +228,10 @@ public class VisionPID extends PIDSubsystem {
 		//}
 	}
 
+	public static void setGearVision(boolean input)
+	{
+		gearVision = input; 
+	}
 	
 	public static boolean toggleGear()
 	{

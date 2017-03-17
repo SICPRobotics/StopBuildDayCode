@@ -21,7 +21,7 @@ public class Shoot extends Command {
 	protected void initialize() 
 	{
 		Shooter.init();
-    	SmartDashboard.putBoolean("Shooting", true);
+    	/*SmartDashboard.putBoolean("Shooting", true);*/
 	}
 
 	// Called repeatedly when this Command is scheduled to run

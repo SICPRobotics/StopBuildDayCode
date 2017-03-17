@@ -20,8 +20,8 @@ public class ToggleHG extends Command {
     protected void initialize() 
     {
     	VisionPID.toggleHG(); 
-    	System.out.println("TOGGLED HG INITIALIZED");
-    	SmartDashboard.putBoolean("Toggle HG Called", true);
+    /*	System.out.println("TOGGLED HG INITIALIZED");*/
+    	/*SmartDashboard.putBoolean("Toggle HG Called", true);*/
     	notDone = true; 
     }
 

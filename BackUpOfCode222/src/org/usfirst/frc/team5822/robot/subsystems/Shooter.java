@@ -23,12 +23,18 @@ public class Shooter extends Subsystem {
     {
 		shootMotor = new CANTalon(4); 
 		shootMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder); //Set the feedback device that is hooked up to the talon
-		shootMotor.setPID(1.3, .001, 35, 0.001, 0, 0, 0);
+		shootMotor.setPID(0, 0, 0, 0.0249755, 0, 0, 0);
+	    //shootMotor.setF(0.04282);
+        //shootMotor.setP(0.4872);
+        //.06097
+        //_talon.setI(.06097); 
 		shootMotor.reverseSensor(true); 
 		tele = new Timer();
 		indexer = new VictorSP(7);
 		//shootMotor = new VictorSP(5);
     }
+    
+    
 
     public static void init()
     {
@@ -38,12 +44,12 @@ public class Shooter extends Subsystem {
     
     public static void index()
     {
-    	indexer.set(-.3);
+    	indexer.set(-.25);
     }
     
     public static void shoot()
 	{
-		if (tele.get()<2)
+		/*if (tele.get()<2)
 			shootMotor.set(.5);
 		else 
 			flag = true; 
@@ -51,13 +57,17 @@ public class Shooter extends Subsystem {
 		if (flag)
 		{
 			shootMotor.changeControlMode(TalonControlMode.Speed);
-			shootMotor.set(8850); 
+			shootMotor.set(6000); 
 			shootMotor.enableControl(); //Enable PID control on the talon
 			flag = false;
 			//shootMotor.set(.7);
 			SmartDashboard.putNumber("Speed", shootMotor.getSpeed());
-		}
-		if(tele.get()>3)
+		}*/
+    	
+    	shootMotor.set(.45);
+    	
+    	SmartDashboard.putNumber("VBus" , shootMotor.getOutputVoltage()); 
+		if(tele.get()>1.5)
 		{
 			index();
 		}

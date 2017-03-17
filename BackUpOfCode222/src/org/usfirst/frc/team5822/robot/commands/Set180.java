@@ -18,7 +18,7 @@ public class Set180 extends Command {
     // Called just before this Command runs the first time
     protected void initialize()
     {
-    	SmartDashboard.putBoolean("Turn 180", foo); 
+    	/*SmartDashboard.putBoolean("Turn 180", foo); */
     }
 
     // Called repeatedly when this Command is scheduled to run

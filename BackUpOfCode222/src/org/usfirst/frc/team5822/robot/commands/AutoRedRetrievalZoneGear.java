@@ -11,15 +11,18 @@ public class AutoRedRetrievalZoneGear extends CommandGroup {
     {
     
     	//TODO: this distance needs to be changed. Then literally call exactly what is in AutoRedBoiler
-     addSequential(new DriveForward(75));
+     addSequential(new DriveForward(60));
      addSequential(new TurnRightFast(60));
      addSequential(new TurnLeftSlow(60));
      addSequential(new ResetEncoder());
-     addSequential(new ChangeVisionDistance(36)); 
+     //addSequential(new ChangeVisionDistance(36)); 
      addSequential(new GearCG());
      addSequential(new ResetGyro());
-     addSequential(new DriveForward(55));
-     addSequential(new DriveSlow(2));
+     addSequential(new DriveForward(63));
+     addSequential(new DriveSlow(4));
      //Need the stuff that lets the human player take up gear
+     
+     
+    
     }
 }

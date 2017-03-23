@@ -65,8 +65,8 @@ public class OI {
 		button6.whenActive(new Climb());
 		button6.whenInactive(new StopClimb());
 		
-		j7.whenActive(new GearCG());
-		j7.whenInactive(new GearCG());
+		j7.whenActive(new Climb());
+		j7.whenInactive(new StopClimb());
 		
 		j8.whenPressed(new ClearScheduler());
 		

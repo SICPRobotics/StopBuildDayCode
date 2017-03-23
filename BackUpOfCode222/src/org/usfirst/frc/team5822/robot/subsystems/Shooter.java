@@ -64,6 +64,9 @@ public class Shooter extends Subsystem {
 			SmartDashboard.putNumber("Speed", shootMotor.getSpeed());
 		}*/
     	
+    	//TODO: this is the power for blue alliance: shootMotor.set(.45);
+    	//TODO: this is the power for the red alliance: shootMotor.set(.75);
+    	
     	shootMotor.set(.45);
     	
     	SmartDashboard.putNumber("VBus" , shootMotor.getOutputVoltage()); 

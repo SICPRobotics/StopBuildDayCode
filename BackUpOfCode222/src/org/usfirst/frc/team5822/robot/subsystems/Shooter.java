@@ -31,64 +31,58 @@ public class Shooter extends Subsystem {
 		shootMotor.reverseSensor(true); 
 		tele = new Timer();
 		indexer = new VictorSP(7);
-		//shootMotor = new VictorSP(5);
     }
     
-    
-
     public static void init()
     {
     	shootMotor.changeControlMode(TalonControlMode.PercentVbus);
-		tele.start();
+		tele.start(); //timer to know when to start indexer
     }
     
+    //starts indexer to feed balls into shooter 
     public static void index()
     {
     	indexer.set(-.25);
     }
     
-    public static void shoot()
+    public static void shoot(double speed)
 	{
-		/*if (tele.get()<2)
-			shootMotor.set(.5);
-		else 
-			flag = true; 
-		
-		if (flag)
-		{
-			shootMotor.changeControlMode(TalonControlMode.Speed);
-			shootMotor.set(6000); 
-			shootMotor.enableControl(); //Enable PID control on the talon
-			flag = false;
-			//shootMotor.set(.7);
-			SmartDashboard.putNumber("Speed", shootMotor.getSpeed());
-		}*/
+		/*attempted using a PID to control shooter motor, but had trouble stopping it
+    	found setting a consistent speed worked well enough, didn't have trouble with motor slowing down like we thought*/
+		    	
+    			/*if (tele.get()<2)
+					shootMotor.set(.5);
+				else 
+					flag = true; 
+				
+				if (flag)
+				{
+					shootMotor.changeControlMode(TalonControlMode.Speed);
+					shootMotor.set(6000); 
+					shootMotor.enableControl(); //Enable PID control on the talon
+					flag = false;
+					//shootMotor.set(.7);
+					SmartDashboard.putNumber("Speed", shootMotor.getSpeed());
+				}*/
     	
-    	//TODO: this is the power for blue alliance: shootMotor.set(.45);
-    	//TODO: this is the power for the red alliance: shootMotor.set(.75);
-    	
-    	shootMotor.set(.45);
+    	shootMotor.set(speed);
     	
     	SmartDashboard.putNumber("VBus" , shootMotor.getOutputVoltage()); 
-		if(tele.get()>1.5)
+		if(tele.get()>1.5) //gives shooter time to get up to speed
 		{
 			index();
 		}
-			
-		//write the code to run the shooter here
+
 	}
     
     public static void stopShooting()
     {
     	//TODO: Having trouble getting shooter to actually stop
-    	//shootMotor.disable();
+    		//shootMotor.disable();
     	shootMotor.set(0);
     	indexer.set(0);
     }
 	
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    }
+    public void initDefaultCommand() {}
 }
 

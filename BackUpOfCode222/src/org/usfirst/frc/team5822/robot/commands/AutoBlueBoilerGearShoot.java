@@ -2,11 +2,11 @@ package org.usfirst.frc.team5822.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
- *
- */
-public class AutoBlueBoilerGearShoot extends CommandGroup {
-
+public class AutoBlueBoilerGearShoot extends CommandGroup 
+{
+	/*didn't have time to finish incorporating vision to help us line up with the boiler 
+	  or to make it fast enough to fit in auto*/
+	
     public AutoBlueBoilerGearShoot() 
     {
     	addSequential(new AutoBlueBoilerGear());

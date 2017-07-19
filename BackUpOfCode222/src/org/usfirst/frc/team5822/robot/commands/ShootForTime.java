@@ -11,13 +11,15 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ShootForTime extends Command {
 
+	double speed;
 	Timer wait; 
-    public ShootForTime() 
+    public ShootForTime(double shootSpeed) 
     {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.shooter);
     	wait = new Timer();
+    	speed = shootSpeed;
     }
 
     // Called just before this Command runs the first time
@@ -31,7 +33,7 @@ public class ShootForTime extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	Shooter.shoot();
+    	Shooter.shoot(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

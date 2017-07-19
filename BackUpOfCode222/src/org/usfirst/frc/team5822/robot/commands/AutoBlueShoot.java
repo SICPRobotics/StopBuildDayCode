@@ -9,7 +9,7 @@ public class AutoBlueShoot extends CommandGroup {
 
     public AutoBlueShoot() 
     {
-    	addSequential(new ShootForTime()); 
+    	addSequential(new ShootForTime(.45)); 
     	addSequential(new DriveForward(100)); //need to fix this code, only in here for the SC
     }
 }

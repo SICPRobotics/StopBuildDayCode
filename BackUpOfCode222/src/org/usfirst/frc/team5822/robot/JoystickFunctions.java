@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class JoystickFunctions 
 {
-	
 	static Joystick discoStick = new Joystick(0); //joystick object
 	static double moveValue;
 	static double rotateValue;	

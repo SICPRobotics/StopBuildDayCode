@@ -2,9 +2,6 @@ package org.usfirst.frc.team5822.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
- *
- */
 public class AutoBlueRetrievalZoneGear extends CommandGroup {
 
     public AutoBlueRetrievalZoneGear()
@@ -21,7 +18,6 @@ public class AutoBlueRetrievalZoneGear extends CommandGroup {
      addSequential(new DriveForward(63));
      addSequential(new DriveSlow(4));
      
-      
      //Need the stuff that lets the human player take up gear
     }
 }

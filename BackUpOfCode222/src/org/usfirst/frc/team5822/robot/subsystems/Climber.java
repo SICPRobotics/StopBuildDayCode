@@ -3,18 +3,14 @@ package org.usfirst.frc.team5822.robot.subsystems;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- *
- */
-public class Climber extends Subsystem {
-
+public class Climber extends Subsystem 
+{
 	VictorSP climbMotor; 
 	
 	public Climber()
 	{
 		climbMotor = new VictorSP(5);
 	}
-	
 	
 	public void climb()
 	{
@@ -25,9 +21,6 @@ public class Climber extends Subsystem {
 	{
 		climbMotor.set(0);
 	}
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    }
+    public void initDefaultCommand() {}
 }
 

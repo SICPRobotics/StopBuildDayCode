@@ -14,6 +14,6 @@ public class AutoRedCenterGearShoot extends CommandGroup {
     	addSequential(new TurnRightFast(46.57));                      
     	addSequential(new TurnLeftSlow(46.57));
     	addSequential(new DriveForward(142.25));
-    	addSequential(new Shoot());
+    	addSequential(new Shoot(.75));
     }
 }

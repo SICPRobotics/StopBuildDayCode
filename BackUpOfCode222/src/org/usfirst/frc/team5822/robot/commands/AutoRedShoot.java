@@ -9,7 +9,7 @@ public class AutoRedShoot extends CommandGroup {
 
     public AutoRedShoot() 
     {
-    	addSequential(new ShootForTime());
+    	addSequential(new ShootForTime(.75));
     	addSequential(new DriveForward(24));
     	addSequential(new TurnRightFast(75));
     	addSequential(new DriveForward(100));

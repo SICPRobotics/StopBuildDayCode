@@ -10,10 +10,13 @@ import org.usfirst.frc.team5822.robot.subsystems.Shooter;
  *
  */
 public class Shoot extends Command {
-	public Shoot() 
+	double speed;
+	
+	public Shoot(double shotSpeed) 
 	{
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.shooter);
+		speed = shotSpeed;
 	}
 
 	// Called just before this Command runs the first time
@@ -28,7 +31,7 @@ public class Shoot extends Command {
 	@Override
 	protected void execute() 
 	{
-		Shooter.shoot();
+		Shooter.shoot(speed);
 		System.out.println("Shooting");
 	}
 

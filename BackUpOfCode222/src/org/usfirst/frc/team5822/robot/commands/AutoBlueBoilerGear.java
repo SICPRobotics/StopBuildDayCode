@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class AutoBlueBoilerGear extends CommandGroup 
 {
+	//turn angle close but not quite right
 
     public AutoBlueBoilerGear()
     {
@@ -15,7 +16,5 @@ public class AutoBlueBoilerGear extends CommandGroup
     	addSequential(new ResetGyro());
     	addSequential(new DriveForward(63));
     	addSequential(new DriveSlow(2));
-  
-     //Need the stuff that lets the human player take up gear
     }
 }

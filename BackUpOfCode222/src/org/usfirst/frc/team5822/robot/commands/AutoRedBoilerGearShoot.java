@@ -4,10 +4,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class AutoRedBoilerGearShoot extends CommandGroup
 {
+	//never had time to test
 	public AutoRedBoilerGearShoot()
 	{
-		//TODO: test this distance
-		
 		addSequential(new AutoRedBoilerGear());
 			
 	    addSequential(new ResetEncoder());

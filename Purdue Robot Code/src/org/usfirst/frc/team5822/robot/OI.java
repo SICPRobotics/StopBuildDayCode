@@ -28,17 +28,7 @@ public class OI
 	public OI()
 	{
 		//xbox button functions
-		buttonA.whenActive(new Swallow()); 		
-		buttonA.whenInactive(new StopIntake());
-		
-		buttonB.whenActive(new OuttakeSlow());
-		buttonB.whenInactive(new StopIntake());
-		
-		buttonX.whenActive(new OuttakeFast());
-		buttonX.whenInactive(new StopIntake());
-		
-		button5.whenActive(new Shoot(.45)); //during teleop, shooter only gets fuel about halfway up; need to fix this
-		button5.whenInactive(new StopShooting());
+
 		
 		button6.whenActive(new Climb());
 		button6.whenInactive(new StopClimb());

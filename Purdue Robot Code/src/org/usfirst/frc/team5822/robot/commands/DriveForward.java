@@ -31,7 +31,6 @@ double distance;
 	protected void initialize() 
 	{
 		Sensors.resetGyro();
-		Robot.vision.disable();
 		DriveTrain.pidBackwards(true);
 		Robot.driveTrain.enable();
 	}

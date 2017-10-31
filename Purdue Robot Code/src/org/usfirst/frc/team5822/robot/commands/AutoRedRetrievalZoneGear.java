@@ -11,10 +11,9 @@ public class AutoRedRetrievalZoneGear extends CommandGroup
 	     addSequential(new TurnRightFast(60));
 	     addSequential(new TurnLeftSlow(60));
 	     addSequential(new ResetEncoder());
-	     //addSequential(new ChangeVisionDistance(36)); 
-	     addSequential(new GearCG());
 	     addSequential(new ResetGyro());
 	     addSequential(new DriveForward(63));
+	     addSequential(new WaitForPilot());
 	     addSequential(new DriveSlow(4));
 	     //Need the stuff that lets the human player take up gear
     }
